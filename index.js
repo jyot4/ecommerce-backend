@@ -3,6 +3,7 @@ import cors from "cors";
 import connection, { dbName } from "./db/connection.js";
 import AdminRouter from "./routes/AdminRouter.js";
 import BaseRouter from "./routes/BaseRouter.js";
+// import product from "./Model/Scheme.js";
 
 const port = 8080;
 export let db;
@@ -13,6 +14,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use("/admin", AdminRouter);
 app.use("/", BaseRouter);
+
+
+// app.get("/category",async(req,res)=>{
+//   const data = await product.find()
+//   console.log(data)
+// })
+
+
 
 connection
   .then((client) => {

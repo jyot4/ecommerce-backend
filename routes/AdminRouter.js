@@ -44,4 +44,9 @@ AdminRouter.post("/category/add", upload.single("photo"), async (req, res) => {
     });
 });
 
+AdminRouter.get("/category", async (req, res) => {
+  const catCollection = await db.collection("categories")
+  res.send(await catCollection.find({}).toArray())
+})
+
 export default AdminRouter;
