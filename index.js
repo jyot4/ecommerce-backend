@@ -4,10 +4,22 @@ import connection, { dbName } from "./db/connection.js";
 import AdminRouter from "./routes/AdminRouter.js";
 import BaseRouter from "./routes/BaseRouter.js";
 // import product from "./Model/Scheme.js";
+import path  from "path"
+import {dirname} from 'path'
+
+import { fileURLToPath } from "url";
+
+
+const __filename= fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+console.log(__dirname);
 
 const port = 8080;
 export let db;
 const app = express();
+
+app.use("/uploads",express.static(path.join(__dirname,"uploads/products")))
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
